@@ -36,7 +36,7 @@ const { createApp } = Vue
     methods: {
 
         nextImg () {
-            if(this.i<4) {
+            if(this.i< this.slides.length - 1 ) {
                 this.i++;
             }
             else {
@@ -50,7 +50,7 @@ const { createApp } = Vue
                 this.i--;
             }
             else {
-                this.i = 4;
+                this.i = this.slides.length - 1;
             }
         },
 
@@ -59,5 +59,10 @@ const { createApp } = Vue
         }
         
         
-    }
+    },
+    mounted () {
+        setInterval(() => {
+            this.nextImg();
+        }, 3000);
+    },
     }).mount('#app')
